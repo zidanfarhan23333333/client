@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+<script src="vendor/jquery/jquery.min.js"></script>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -418,9 +421,9 @@
                   <thead>
                     <tr>
                       <th>id</th>
-                      <th>nama pelanggan</th>
-                      <th>alamat pelanggan</th>
-                      <th>telepon pelanggan</th>
+                      <th>Nama pelanggan</th>
+                      <th>Alamat pelanggan</th>
+                      <th>Telepon pelanggan</th>
                       <th>AKSI</th>
                     </tr>
                   </thead>
@@ -512,10 +515,11 @@
     <script src="js/demo/chart-pie-demo.js"></script>
 
     <script>
+      let base_url = "http://localhost/projekuas-main/index.php/api/";
       $(document).ready(function () {
         $.ajax({
           type: "GET",
-          url: "http://localhost/projekuas-main/index.php/api/pelanggan",
+          url: base_url + "pelanggan",
           data: {
             id: "",
           },
