@@ -1,0 +1,26 @@
+<script>
+    var base_url = "http://localhost/penyewaan/api/";
+    $(document).ready(function () {
+        var storedSessionData = localStorage.getItem('singleData');
+        if (storedSessionData) {
+            var retrievedSessionData = JSON.parse(storedSessionData);
+        } else {
+            window.location.href = 'pelanggan_index.html';
+        }
+
+        let dataRender = `<tr>
+                                <th style="width:15%;">Name</th>
+                                <td>: ${retrievedSessionData.nama_pelanggan}</td>
+                            </tr>
+                            <tr>
+                                <th style="width:15%;">Alamat</th>
+                                <td>: ${retrievedSessionData.alamat_pelanggan}</td>
+                            </tr>
+                            <tr>
+                                <th style="width:15%;">Phone Number</th>
+                                <td>: ${retrievedSessionData.telepon_pelanggan}</td>
+                            </tr>`;
+        $("#tableRender").empty();
+        $("#tableRender").append(dataRender); 
+    });
+</script>
