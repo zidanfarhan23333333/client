@@ -414,11 +414,11 @@
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-md-12" style="text-align: custify">
                 <div class="form-group">
-                  <label for="name">Nama pelanggan</label>
+                  <label for="nama_pelanggan">Nama pelanggan</label>
                   <input
                     type="text"
                     name="nama_pelanggan"
-                    id="nama_villa"
+                    id="nama_pelanggan"
                     class="form-control"
                     placeholder="Masukkan Nama Pelanggan"
                     required
@@ -426,22 +426,22 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="number">Alamat Pelanggan</label>
+                  <label for="alamat_pelanggan">Alamat Pelanggan</label>
                   <input
                     type="text"
                     name="Alamat_pelanggan"
-                    id="fasilitas_villa"
+                    id="alamat_pelanggan"
                     class="form-control"
                     placeholder="Masukkan Alamat Pelanggan"
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label for="number">Telepon Pelanggan</label>
+                  <label for="telepon_pelanggan">Telepon Pelanggan</label>
                   <input
                     type="text"
                     name="telepon_pelanggan"
-                    id="harga_per_malam"
+                    id="telepon_pelanggan"
                     class="form-control"
                     placeholder="Masukkan Telepon pelanggan"
                     required
@@ -537,27 +537,30 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
-      $(document).ready(function () {
-        $("#formPelanggan").submit(function (e) {
-          e.preventDefault();
-          var formData = new FormData(this);
-          $.ajax({
-            type: "POST",
-            url: "http://127.0.0.1/projekuas-main/index.php/api/pelanggan",
-            headers: {},
-            contentType: false,
-            processData: false,
-            data: formData,
-            success: function (response) {
-              alert("Pelanggan berhasil ditambahkan");
-              window.location.href = "pelanggan_index.html";
-            },
-            error: function (xhr, status, error) {
-              console.error("AJAX request failed:", status, error);
-            },
+      var base_url = "http://localhost/projekuas-main/index.php/api/";
+      $(document).ready(function(){
+          $(document).on("click", "#submit", function() {
+              $.ajax({
+              type: "POST",
+              url: base_url + "pelanggan",
+              data: {
+                  nama_pelanggan: $("#nama_pelanggan").val(),
+                  alamat_pelanggan: $("#alamat_pelanggan").val(),
+                  telepon_pelanggan: $("#telepon_pelanggan").val(),
+              },
+              dataType: "json",
+              cache: false,
+              success:
+                  function(data){
+                      if (data.status_code == 502){
+                          alert(data.message);
+                      }else {
+                          window.location.href = 'pelanggan_index.html'
+                      }
+                  }
+              });
+          })
           });
-        });
-      });
-    </script>
+  </script>
   </body>
 </html>
