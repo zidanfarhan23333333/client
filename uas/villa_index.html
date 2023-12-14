@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+<script src="vendor/jquery/jquery.min.js"></script>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -83,9 +86,11 @@
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">List Data Master:</h6>
-              <a class="collapse-item" href="villa_index.html">Villa</a>
-              <a class="collapse-item" href="cards.html">Kelas</a>
+              <h6 class="collapse-header">List Data Pelanggan:</h6>
+              <a class="collapse-item" href="user_index.html">users</a>
+              <a class="collapse-item" href="pelanggan_index.html">Pelanggan</a>
+              <a class="collapse-item" href="villa_index.html"> Villa </a>
+              <a class="collapse-item" href="detail_index.html">Detail</a>
             </div>
           </div>
         </li>
@@ -203,7 +208,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="small text-gray-500">December 06, 2023</div>
+                      <div class="small text-gray-500">December 12, 2019</div>
                       <span class="font-weight-bold"
                         >A new monthly report is ready to download!</span
                       >
@@ -216,7 +221,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="small text-gray-500">December 1, 2023</div>
+                      <div class="small text-gray-500">December 7, 2019</div>
                       $290.29 has been deposited into your account!
                     </div>
                   </a>
@@ -227,7 +232,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="small text-gray-500">November 22, 2023</div>
+                      <div class="small text-gray-500">December 2, 2019</div>
                       Spending Alert: We've noticed unusually high spending for
                       your account.
                     </div>
@@ -415,11 +420,10 @@
                 <table class="table table-bordered" style="text-align: center">
                   <thead>
                     <tr>
-                      <th style="width: 10%">NO</th>
-                      <th>ID VILLA</th>
-                      <th>NAMA VILLA</th>
-                      <th>FASILITAS VILLA</th>
-                      <th>HARGA PER MALAM</th>
+                      <th>id</th>
+                      <th>Nama Villa</th>
+                      <th>Fasilitas</th>
+                      <th>Harga Per Malam</th>
                       <th>AKSI</th>
                     </tr>
                   </thead>
@@ -509,7 +513,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
     <script>
+      let base_url = "http://localhost/projekuas-main/index.php/api/villa";
       $(document).ready(function () {
         $.ajax({
           type: "GET",
@@ -523,24 +529,23 @@
             let dataBody = ``;
             for (let i = 0; i < responseData.length; i++) {
               dataBody += `<tr>
-                  <td>${i + 1}</td>
-                  <td>${responseData[i].id_villa}</td>
-                  <td>${responseData[i].nama_villa}</td>
-                  <td>${responseData[i].fasilitas_villa}</td>
-                  <td>${responseData[i].harga_per_malam}</td>
-                  
-                  <td>
-                      <a href="#" data-id="${
-                        responseData[i].id
-                      }" class="btn btn-sm btn-info btnView"><i class="fa fa-eye"></i></a>&nbsp;
-                      <a href="#" data-id="${
-                        responseData[i].id
-                      }" class="btn btn-sm btn-warning btnEdit"><i class="fa fa-pen"></i></a>&nbsp;
-                      <a href="#" data-id="${
-                        responseData[i].id
-                      }" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>&nbsp;
-                  </td>
-                  </tr>`;
+                <td>${i + 1}</td>
+                <td>${responseData[i].nama_villa}</td>
+                <td>${responseData[i].fasilitas_villa}</td>
+                <td>${responseData[i].harga_per_malam}</td>
+                
+                <td>
+                    <a href="#" data-id="${
+                      responseData[i].id
+                    }" class="btn btn-sm btn-info btnView"><i class="fa fa-eye"></i></a>&nbsp;
+                    <a href="#" data-id="${
+                      responseData[i].id
+                    }" class="btn btn-sm btn-warning btnEdit"><i class="fa fa-pen"></i></a>&nbsp;
+                    <a href="#" data-id="${
+                      responseData[i].id
+                    }" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>&nbsp;
+                </td>
+                </tr>`;
             }
             $("#myBody").empty();
             $("#myBody").append(dataBody);
