@@ -87,7 +87,6 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">List Data Pelanggan:</h6>
-              <a class="collapse-item" href="user_index.html">users</a>
               <a class="collapse-item" href="pelanggan_index.html">Pelanggan</a>
               <a class="collapse-item" href="villa_index.html"> Villa </a>
               <a class="collapse-item" href="detail_index.html">Detail</a>
@@ -542,13 +541,13 @@
                 
                 <td>
                     <a href="#" data-id="${
-                      responseData[i].id
+                      responseData[i].id_detail
                     }" class="btn btn-sm btn-info btnView"><i class="fa fa-eye"></i></a>&nbsp;
                     <a href="#" data-id="${
-                      responseData[i].id
+                      responseData[i].id_detail
                     }" class="btn btn-sm btn-warning btnEdit"><i class="fa fa-pen"></i></a>&nbsp;
                     <a href="#" data-id="${
-                      responseData[i].id
+                      responseData[i].id_detail
                     }" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>&nbsp;
                 </td>
                 </tr>`;
@@ -563,9 +562,9 @@
         dataId = $(this).data("id");
         $.ajax({
           type: "GET",
-          url: base_url + "detail",
+          url: "http://localhost/projekuas-main/index.php/api/detail",
           data: {
-            id: dataId,
+            id_detail: dataId,
           },
           dataType: "json",
           cache: false,
@@ -580,9 +579,9 @@
         dataId = $(this).data("id");
         $.ajax({
           type: "GET",
-          url: base_url + "detail",
+          url: "http://localhost/projekuas-main/index.php/api/detail",
           data: {
-            id: dataId,
+            id_detail: dataId,
           },
           dataType: "json",
           cache: false,
@@ -597,9 +596,9 @@
         dataId = $(this).data("id");
         $.ajax({
           type: "DELETE",
-          url: base_url + "detail",
+          url: "http://localhost/projekuas-main/index.php/api/detail",
           data: {
-            id: dataId,
+            id_detail: dataId,
           },
           dataType: "json",
           cache: false,
