@@ -84,8 +84,9 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">List Data Master:</h6>
-              <a class="collapse-item" href="villa_index.html">Villa</a>
               <a class="collapse-item" href="pelanggan_index.html">pelanggan</a>
+              <a class="collapse-item" href="villa_index.html">Villa</a>
+              <a class="collapse-item" href="detail_index.html">detail</a>
             </div>
           </div>
         </li>
@@ -403,7 +404,7 @@
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
               <h1 class="h3 mb-0 text-gray-800">List pelanggan</h1>
-              <a href="villa_create.html" class="btn btn-success btn-sm"
+              <a href="pelanggan_create.html" class="btn btn-success btn-sm"
                 ><i class="fa fa-plus-circle"></i> Tambah Data</a
               >
             </div>
@@ -537,12 +538,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
-      var base_url = "http://localhost/projekuas-main/index.php/api/";
+      var base_url = "http://localhost/projekuas-main/index.php/api/pelanggan";
       $(document).ready(function(){
           $(document).on("click", "#submit", function() {
               $.ajax({
               type: "POST",
-              url: base_url + "pelanggan",
+              url: "http://localhost/projekuas-main/index.php/api/pelanggan",
               data: {
                   nama_pelanggan: $("#nama_pelanggan").val(),
                   alamat_pelanggan: $("#alamat_pelanggan").val(),
@@ -562,5 +563,5 @@
           })
           });
   </script>
-  </body>
+ </body>
 </html>
